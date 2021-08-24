@@ -1,0 +1,27 @@
+AWS SNS Subscription :
+
+Type: AWS::SNS::Subscription
+Properties: 
+  DeliveryPolicy: Json
+  Endpoint: String
+  FilterPolicy: Json
+  Protocol: String
+  RawMessageDelivery: Boolean
+  RedrivePolicy: Json
+  Region: String
+  SubscriptionRoleArn: String
+  TopicArn: String
+  
+  
+----------------------------------------------------
+
+
+Subscription:
+    Type: 'AWS::SNS::Subscription'
+    Properties:
+      TopicArn: !Ref TopicArn 123456789101
+      Endpoint: !GetAtt 
+        - AbcdEventQueue
+        - Arn
+      Protocol: sqs
+      RawMessageDelivery: 'true'
